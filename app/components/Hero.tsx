@@ -39,7 +39,7 @@ export default function Hero() {
 
           <p className="text-white/80 leading-relaxed max-w-[460px] mx-auto md:mx-0 mb-9 text-sm md:text-base">
             Chega de gastar horas comparando preços em dezenas de sites.
-            Eu faço isso por você — encontro as melhores passagens, hotéis
+            Eu faço isso por você! Encontro as melhores passagens, hotéis
             e pacotes para o destino que você sempre sonhou, com
             atendimento exclusivo do início ao fim.
           </p>

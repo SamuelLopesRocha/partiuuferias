@@ -144,7 +144,7 @@ export default function Viagens() {
                         <span className="text-amber-500">viajar?</span>
                     </h2>
                     <p className="max-w-[520px] text-base text-white/50 leading-relaxed">
-                        Do sonho à realidade — cuido de cada detalhe para que você só precise se preocupar em aproveitar.
+                        Do sonho à realidade cuido de cada detalhe para que você só precise se preocupar em aproveitar.
                     </p>
                 </motion.div>
 
