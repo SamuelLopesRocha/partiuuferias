@@ -12,7 +12,7 @@ const item = {
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } as const},
 }
 
-const link = "https://encontresuaviagem.com.br/consultores/roney-borges-coelho/"
+const link = "https://api.whatsapp.com/send?phone=5511980127335&text=Vim%20do%20site!%20Quero%20uma%20consultoria%20personalizada!"
 
 const services = [
     {
@@ -66,7 +66,7 @@ const services = [
         subtitle: "Atendimento exclusivo",
         description:
             "Do roteiro ao retorno: monto sua viagem completa com atenção a cada detalhe. Você só precisa fazer as malas.",
-        href: "https://api.whatsapp.com/send?phone=5511980127335&text=Vim%20do%20site!%20Quero%20uma%20consultoria%20personalizada!",
+        href: link,
         highlight: false,
     },
 ]
