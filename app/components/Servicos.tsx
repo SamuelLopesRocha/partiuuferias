@@ -9,7 +9,7 @@ const container = {
 
 const item = {
     hidden: { opacity: 0, y: 32 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } as const},
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } as const },
 }
 
 const link1 = "https://api.whatsapp.com/send?phone=5511980127335&text=Quero%20passagens%20exclusivas!"
@@ -82,21 +82,25 @@ export default function Servicos() {
             id="servicos"
             className="relative overflow-hidden py-24 md:py-32"
             style={{
-                /* Une a saída de Viagens (#0d1b40) → Footer (#0F1F4B) sem corte */
-                background:
-                    "linear-gradient(to bottom, #0d1b40 0%, #0e1c42 30%, #0F1F4B 70%, #0F1F4B 100%)",
+                background: "linear-gradient(to bottom, #0d1b40 0%, #0f2050 30%, #142a6e 65%, #1a3380 100%)",
             }}
         >
-            {/* linhas diagonais decorativas */}
+            {/* Ondas decorativas */}
+            <div className="pointer-events-none absolute -right-[120px] bottom-[2px] -translate-y-[-85%] w-[520px] h-[520px] rounded-full border-[60px] border-blue-400/10" />
+            <div className="pointer-events-none absolute -right-[182px] bottom-[2px] -translate-y-[-80%] w-[680px] h-[680px] rounded-full border-[40px] border-blue-400/5" />
+
+            {/* Pontilhado Sutil */}
             <div
-                className="pointer-events-none absolute inset-0 opacity-[0.035]"
+                className="pointer-events-none absolute inset-0 opacity-[0.03]"
                 style={{
-                    backgroundImage:
-                        "repeating-linear-gradient(135deg, #F59E0B 0px, #F59E0B 1px, transparent 1px, transparent 48px)",
+                    backgroundImage: "radial-gradient(circle, #F59E0B 1px, transparent 1px)",
+                    backgroundSize: "36px 36px",
                 }}
             />
-            {/* brilho superior direito */}
-            <div className="pointer-events-none absolute -right-40 top-0 h-[400px] w-[400px] rounded-full bg-[radial-gradient(ellipse,_rgba(245,158,11,0.07)_0%,_transparent_70%)]" />
+            {/* brilho âmbar esquerdo */}
+            <div className="pointer-events-none absolute -left-40 bottom-0 h-[500px] w-[500px] rounded-full bg-[radial-gradient(ellipse,_rgba(245,158,11,0.07)_0%,_transparent_70%)]" />
+            {/* brilho azul direito */}
+            <div className="pointer-events-none absolute -right-20 top-20 h-[400px] w-[400px] rounded-full bg-[radial-gradient(ellipse,_rgba(59,130,246,0.08)_0%,_transparent_70%)]" />
 
             <div className="relative z-10 mx-auto max-w-6xl px-6">
 
@@ -104,7 +108,7 @@ export default function Servicos() {
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-80px" }}
+                    viewport={{ once: false, margin: "-80px" }}
                     transition={{ duration: 0.7 }}
                     className="mb-16 text-center"
                 >
@@ -128,7 +132,7 @@ export default function Servicos() {
                     variants={container}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, margin: "-60px" }}
+                    viewport={{ once: false, margin: "-60px" }}
                     className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
                 >
                     {services.map((svc) => (
