@@ -67,7 +67,20 @@ const INTERVAL = 4000
 export default function Viagens() {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [paused, setPaused] = useState(false)
-    const maxIndex = destinations.length - 2
+    const [isMobile, setIsMobile] = useState(false)
+    const maxIndex = isMobile
+        ? destinations.length - 1
+        : destinations.length - 2
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768)
+        }
+
+        handleResize()
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
 
     useEffect(() => {
         const id = "viagens-kf"
@@ -123,7 +136,7 @@ export default function Viagens() {
             <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[700px] -translate-x-1/2
         bg-[radial-gradient(ellipse,_rgba(245,158,11,0.06)_0%,_transparent_65%)]" />
 
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
 
                 {/* cabeçalho com motion de entrada */}
                 <motion.div
@@ -137,20 +150,20 @@ export default function Viagens() {
                         Destinos Selecionados
                     </span>
                     <h2
-                        className="text-4xl md:text-5xl font-black text-white uppercase mb-4"
+                        className="text-3xl md:text-5xl font-black text-white uppercase mb-4"
                         style={{ fontFamily: "Montserrat, sans-serif" }}
                     >
                         Para onde você quer{" "}
                         <span className="text-amber-500">viajar?</span>
                     </h2>
-                    <p className="max-w-[520px] text-base text-white/50 leading-relaxed">
+                    <p className="max-w-[520px] text-sm md:text-base text-white/50 leading-relaxed">
                         Do sonho à realidade cuido de cada detalhe para que você só precise se preocupar em aproveitar.
                     </p>
                 </motion.div>
 
                 {/* carrossel com motion de entrada */}
                 <motion.div
-                    className="relative group mb-16"
+                    className="relative group mb-8 md:mb-16"
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "-60px" }}
@@ -161,9 +174,9 @@ export default function Viagens() {
                     {/* Setas */}
                     <button
                         onClick={handlePrev}
-                        className="absolute -left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white rounded-full
+                        className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white rounded-full
               shadow-2xl flex items-center justify-center text-[#0F1F4B]
-              opacity-0 group-hover:opacity-100 transition-all hover:scale-110 border border-gray-100 cursor-pointer"
+              opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all hover:scale-110 border border-gray-100 cursor-pointer"
                     >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
@@ -171,9 +184,9 @@ export default function Viagens() {
                     </button>
                     <button
                         onClick={handleNext}
-                        className="absolute -right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white rounded-full
+                        className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white rounded-full
               shadow-2xl flex items-center justify-center text-[#0F1F4B]
-              opacity-0 group-hover:opacity-100 transition-all hover:scale-110 border border-gray-100 cursor-pointer"
+              opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all hover:scale-110 border border-gray-100 cursor-pointer"
                     >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
@@ -183,7 +196,11 @@ export default function Viagens() {
                     <div className="overflow-hidden">
                         <motion.div
                             className="flex"
-                            animate={{ x: `calc(-${currentIndex * 50}% - ${currentIndex * (GAP / 2)}px)` }}
+                            animate={{
+                                x: isMobile
+                                    ? `calc(-${currentIndex * 100}% - ${currentIndex * GAP}px)`
+                                    : `calc(-${currentIndex * 50}% - ${currentIndex * (GAP / 2)}px)`
+                            }}
                             transition={{ type: "spring", stiffness: 200, damping: 25 }}
                             style={{ gap: GAP }}
                         >
@@ -195,7 +212,12 @@ export default function Viagens() {
                                     rel="noopener noreferrer"
                                     className="relative shrink-0 group/card rounded-3xl overflow-hidden border border-white/10
                     hover:border-white/30 transition-all duration-300"
-                                    style={{ width: `calc(50% - ${GAP / 2}px)`, height: 420 }}
+                                    style={{
+                                        width: isMobile
+                                            ? "100%"
+                                            : `calc(50% - ${GAP / 2}px)`,
+                                        height: isMobile ? 360 : 420
+                                    }}
                                     whileHover={{ y: -6 }}
                                     transition={{ duration: 0.3 }}
                                 >
@@ -251,14 +273,14 @@ export default function Viagens() {
 
                 {/* rodapé do carrossel com motion de entrada */}
                 <motion.div
-                    className="flex flex-col md:flex-row items-center justify-between gap-8 pt-8 border-t border-white/10"
+                    className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8 pt-8 border-t border-white/10"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
                 >
                     {/* Contador + barra */}
-                    <div className="flex items-center gap-6 w-full md:w-auto">
+                    <div className="flex items-center gap-6 w-full md:w-auto justify-center">
                         <div className="flex items-baseline gap-1 font-mono text-white">
                             <span className="text-2xl font-black text-amber-500">
                                 {(currentIndex + 1).toString().padStart(2, "0")}
@@ -269,7 +291,7 @@ export default function Viagens() {
                             </span>
                         </div>
 
-                        <div className="relative h-[2px] w-48 bg-white/10 rounded-full overflow-hidden">
+                        <div className="relative h-[2px] w-32 md:w-48 bg-white/10 rounded-full overflow-hidden">
                             <motion.div
                                 className="absolute top-0 left-0 h-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]"
                                 initial={false}
@@ -286,7 +308,7 @@ export default function Viagens() {
                     </div>
 
                     {/* CTA */}
-                    <div className="flex flex-col md:flex-row items-center gap-6">
+                    <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6 w-full md:w-auto">
                         <div className="text-center md:text-right">
                             <p className="text-white/40 text-[10px] font-bold uppercase tracking-[2px] mb-1">Personalizado</p>
                             <p className="text-white/80 text-sm font-medium">Não encontrou o que procurava?</p>

@@ -14,14 +14,14 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex items-center min-h-screen overflow-hidden pt-[70px] 
+      className="relative flex items-center min-h-[90vh] md:min-h-screen overflow-hidden pt-[70px] 
       bg-gradient-to-br from-[#1E3A8A] to-[#1a3380]"
     >
       {/* Ondas decorativas */}
       <div className="pointer-events-none absolute -left-[120px] -bottom-[80px] w-[520px] h-[520px] rounded-full border-[60px] border-blue-500/10" />
       <div className="pointer-events-none absolute -left-[200px] -bottom-[160px] w-[680px] h-[680px] rounded-full border-[40px] border-blue-500/5" />
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 px-6 md:px-12 py-12 md:py-16 text-center md:text-left">
+      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12 px-5 md:px-12 py-10 md:py-16 text-center md:text-left">
 
         {/* ESQUERDA */}
         <div
@@ -29,7 +29,7 @@ export default function Hero() {
             }`}
         >
           <h1 className="font-extrabold uppercase text-white leading-tight 
-            text-[26px] sm:text-[32px] md:text-[42px] lg:text-[50px] mb-5"
+            text-[24px] sm:text-[30px] md:text-[42px] lg:text-[50px] mb-4"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
             Sua próxima viagem<br />
@@ -37,7 +37,7 @@ export default function Hero() {
             <span className="text-amber-500">conversa</span>
           </h1>
 
-          <p className="text-white/80 leading-relaxed max-w-[460px] mx-auto md:mx-0 mb-9 text-sm md:text-base">
+          <p className="text-white/80 leading-relaxed max-w-[420px] mx-auto md:mx-0 mb-7 text-[13px] sm:text-sm md:text-base">
             Chega de gastar horas comparando preços em dezenas de sites.
             Eu faço isso por você! Encontro as melhores passagens, hotéis
             e pacotes para o destino que você sempre sonhou, com
@@ -50,9 +50,9 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-3 
             bg-amber-500 text-[#1E3A8A] font-extrabold uppercase 
-            px-8 py-4 rounded-lg transition-all duration-300
+            px-6 py-3.5 sm:px-8 sm:py-4 rounded-lg transition-all duration-300
             hover:bg-amber-400 hover:-translate-y-1 hover:shadow-[0_10px_28px_rgba(245,158,11,0.45)]
-            w-full md:w-auto"
+            w-full md:w-auto text-sm sm:text-base"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
             <span className="text-[22px] leading-none">
@@ -70,7 +70,7 @@ export default function Hero() {
           className={`flex-shrink-0 flex justify-center items-center transition-all duration-700 delay-150 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-7"
             }`}
         >
-          <div className="relative w-[320px] sm:w-[360px] md:w-[380px] h-[380px] md:h-[460px] rounded-2xl overflow-hidden shadow-[0_28px_64px_rgba(0,0,0,0.35)]">
+          <div className="relative w-[260px] sm:w-[300px] md:w-[380px] h-[320px] sm:h-[360px] md:h-[460px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
 
             {/* Borda dourada */}
             <div className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-amber-500/40 z-20" />
