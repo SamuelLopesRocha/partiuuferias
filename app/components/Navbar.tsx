@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useState, useEffect } from "react"
@@ -43,13 +44,13 @@ export default function Navbar() {
 
             {/* LOGO */}
             <a href="#home" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-lg">
-                ✈️
+              <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg">
+                <img src="LogoPartiuuferias.png" alt="Logo Partiuuferias" />
               </div>
 
               <div className="leading-tight">
                 <p className="text-[17px] font-bold tracking-wide">
-                  Partiuuferias
+                  Partiuu<span className="text-amber-500">ferias</span>
                 </p>
                 <span className="text-[10px] text-amber-400 uppercase tracking-[2px] font-semibold">
                   Consultor de Viagens
