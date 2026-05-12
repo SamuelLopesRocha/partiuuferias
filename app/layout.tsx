@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Partiuuferias - Consultor de Viagens",
   description: "Especialista em viagens personalizadas — passagens, hotéis, cruzeiros e muito mais.",
   icons: {
-    icon: "./favicon.ico",
+    icon: "/favicon.ico",
   },  
   verification: {
     google: "taIPR0W2l_8P5EuIRpBecG_h3NZQH_KO9-J8Oz_HjEk",
